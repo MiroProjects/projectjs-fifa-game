@@ -2,6 +2,7 @@
 var btnTeams = document.getElementById("teams");
 var btnMatches = document.getElementById("matches");
 var btnGroups = document.getElementById("groups");
+var btnSearch = document.getElementById("search");
 var content = document.getElementById("mainContent");
 var title = document.getElementById("paragraph");
 var popUp = document.getElementById("popUpWindow");
@@ -14,11 +15,11 @@ var teamData = null;
 var groupData = null;
 
 var getData = () => {
-    Ajax.get("https://worldcup.sfg.io/matches", (data) => {
+    Ajax.get("http://worldcup.sfg.io/matches", (data) => {
         matchData = data;
-        Ajax.get("https://worldcup.sfg.io/teams/", (data) => {
+        Ajax.get("http://worldcup.sfg.io/teams/", (data) => {
             teamData = data;
-            Ajax.get("https://worldcup.sfg.io/teams/group_results", (data) => {
+            Ajax.get("http://worldcup.sfg.io/teams/group_results", (data) => {
                 groupData = data;
             })
         });
@@ -36,6 +37,10 @@ var addEventListenersToButtons = function(){
 
     btnGroups.addEventListener("click", () => {
         Group.createTables(groupData, content, title);
+    });
+
+    btnSearch.addEventListener("click", () => {
+        Search.createSearchWindow(popUp, teamData, content, title);
     });
 
     logoImage.addEventListener("click", () => {

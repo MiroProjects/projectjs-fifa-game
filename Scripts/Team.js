@@ -95,7 +95,7 @@ Team.addEventListenersToButtons = function () {
                 return;
             }
 
-            Ajax.get(`https://worldcup.sfg.io/matches/country?fifa_code=${countryId}`, (data) => {
+            Ajax.get(`http://worldcup.sfg.io/matches/country?fifa_code=${countryId}`, (data) => {
                 Country.createTable(data, this.content, this.paragraph);
                 //Cache the result for the country
                 this.countries[countryId] = data;

@@ -36,7 +36,7 @@ header#mainHeader span#textLogo{
 header#mainHeader nav{
     display: inline-block;
     padding: 0;
-    margin-left: 25%;
+    margin-left: 15%;
     vertical-align: bottom;
 }
 
@@ -44,7 +44,7 @@ header#mainHeader nav ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 400px;
+    width: 550px;
     font-size: 25px;
     color: white;
 }
@@ -191,4 +191,24 @@ div#popUpInfoMatch{
 p.popUpInfoParagraph{
     margin: 0;
     margin-bottom: 15px;
+}
+
+div#popUpSearch{
+    width: 300px;
+    padding: 10px;
+    background-color: rgba(242, 242, 242, 0.8);
+    border: solid rgb(204, 204, 204) 5px;
+    text-align: center;
+    position: fixed;
+    top: 150px;
+    left: 40%;
+    font-size: 25px;
+    height: 260px;
+    font-family: 'Overpass', sans-serif;
+}
+
+select#selectCountry, select#selectLetter, select#selectMatch{
+    width: 100%;
+    font-family: 'Overpass', sans-serif;
+    height: 30px;
 }
