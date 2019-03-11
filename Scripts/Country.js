@@ -11,7 +11,7 @@ Country.createTable = function(data, content, paragraph){
     var headRow = document.createElement("tr");
     var headers = ["№", "Venue", "Location", "Home team", "Away Team", "Winner"];
     var info = ["", "venue", "location", "home_team_country", "away_team_country", "winner"];
-    var titleText = document.createTextNode("Country's statistics");
+    var titleText = document.createTextNode("Country's all matches");
     paragraph.appendChild(titleText);
 
     for (let index = 0; index < headers.length; index++) {

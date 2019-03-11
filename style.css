@@ -21,16 +21,15 @@ header#mainHeader span{
     vertical-align: bottom;
 }
 
-header#mainHeader a img{
+header#mainHeader img{
     width: 8%;
     margin-top: 10px;
     margin-left: 1%;
     vertical-align: middle;
+    cursor: pointer;
 }
 
-header#mainHeader span a#text-logo{
-    display: inline-block;
-    text-decoration: none;
+header#mainHeader span#textLogo{
     color: white;
 }
 
@@ -56,7 +55,7 @@ header#mainHeader nav ul li{
     text-align: center;
 }
 
-header#mainHeader nav ul li:hover, header#mainHeader span a#text-logo:hover{
+header#mainHeader nav ul li:hover, header#mainHeader span#textLogo:hover{
     color: rgba(198, 146, 45, 0.5);
     cursor: pointer;
 }
@@ -73,6 +72,7 @@ img{
 
 article#mainContent{
     padding: 20px;
+    text-align: center;
 }
 
 table#infoTable{
@@ -117,4 +117,78 @@ p.groupTitle{
     display: inline-block;
     font-size: 25px;
     margin-top: 50px;
+}
+
+p.firstGroup{
+    margin-top: 0;
+}
+
+div#popUp{
+    width: 300px;
+    padding: 10px;
+    background-color: rgba(242, 242, 242, 0.8);
+    border: solid rgb(204, 204, 204) 5px;
+    text-align: center;
+    position: fixed;
+    top: 150px;
+    left: 40%;
+    font-size: 25px;
+    height: 230px;
+    font-family: 'Overpass', sans-serif;
+}
+
+input#closeBtn{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 15px;
+    display: inline-block;
+    width: 150px;
+    opacity: 0.6;
+    margin-top: 50px;
+    font-family: 'Overpass', sans-serif;
+}
+
+input#closeBtn:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+p#onLoadMessage{
+    font-size: 35px;
+    display: inline-block;
+}
+
+input.infoButtons{
+    background-color: rgb(51, 197, 255);
+    color: white;
+    border: none;
+    padding: 15px;
+    display: inline-block;
+    width: 100px;
+    opacity: 0.7;
+}
+
+input.infoButtons:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+div#popUpInfoMatch{
+    width: 300px;
+    padding: 10px;
+    background-color: rgba(242, 242, 242, 0.8);
+    border: solid rgb(204, 204, 204) 5px;
+    text-align: center;
+    position: fixed;
+    top: 150px;
+    left: 40%;
+    font-size: 25px;
+    height: 320px;
+    font-family: 'Overpass', sans-serif;
+}
+
+p.popUpInfoParagraph{
+    margin: 0;
+    margin-bottom: 15px;
 }

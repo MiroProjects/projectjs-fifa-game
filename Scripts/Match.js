@@ -6,6 +6,9 @@ Match.buttons = [];
 Match.table = null;
 Match.title = null;
 
+//Stores the current pop up
+Match.popUp = null;
+
 Match.createTable = function(data, content, paragraph){
     //Clear the previous field
     this.clear(content, paragraph);
@@ -85,7 +88,12 @@ Match.addEventListenersToButtons = function(matchData){
                 }          
             }
             var dataWeather = match.weather;
-            alert(`Weather: ${dataWeather.description}, Temperature: ${dataWeather.temp_celsius}, Wind Speed: ${dataWeather.wind_speed}, Humidity: ${dataWeather.humidity}`);
+            text = [`Weather: ${dataWeather.description}`, 
+            `Temperature: ${dataWeather.temp_celsius}`,
+            ` Wind Speed: ${dataWeather.wind_speed}`,
+            `Humidity: ${dataWeather.humidity}`];
+
+            popUpInfoWindow(text)
         });
     }
 };
@@ -93,4 +101,32 @@ Match.addEventListenersToButtons = function(matchData){
 Match.clear = function(content, title){
     content.innerHTML = "";
     title.innerHTML = "";
+};
+
+var popUpInfoWindow = function(textArray){
+    //If there is a pop up when you click for new info remove the old one
+    if (Match.popUp) {
+        Match.table.removeChild(Match.popUp);
+    }
+    //Create pop up
+    var div = document.createElement("div");
+    div.setAttribute("id", "popUpInfoMatch");
+    for (let index = 0; index < textArray.length; index++) {
+        var textParagraph = document.createElement("p");
+        textParagraph.setAttribute("class", "popUpInfoParagraph");
+        var text = document.createTextNode(textArray[index]);
+        textParagraph.appendChild(text);
+        div.appendChild(textParagraph);
+    }
+    var closeBtn = document.createElement("Input");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("value", "Close");
+    closeBtn.setAttribute("id", "closeBtn");
+    closeBtn.addEventListener("click", () => {
+        Match.table.removeChild(div);
+        Match.popUp = null;
+    });
+    div.appendChild(closeBtn);
+    Match.table.appendChild(div);
+    Match.popUp = div;
 };

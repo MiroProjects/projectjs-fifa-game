@@ -54,7 +54,7 @@ Group.createTables = function(data, content, paragraph){
         var div = document.createElement("div");
         div.setAttribute("class", "groupContainer");
         var groupParagraph = document.createElement("p");
-        groupParagraph.setAttribute("class", "groupTitle");
+        index == 0 ? groupParagraph.setAttribute("class", "groupTitle firstGroup") : groupParagraph.setAttribute("class", "groupTitle") 
         var groupTitle = document.createTextNode(`Group ${groups[index]}`);
         groupParagraph.appendChild(groupTitle);
         div.appendChild(groupParagraph);

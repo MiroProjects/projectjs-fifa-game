@@ -4,6 +4,9 @@ var btnMatches = document.getElementById("matches");
 var btnGroups = document.getElementById("groups");
 var content = document.getElementById("mainContent");
 var title = document.getElementById("paragraph");
+var popUp = document.getElementById("popUpWindow");
+var logoImage = document.getElementById("logo");
+var textLogo = document.getElementById("textLogo");
 
 //Cache the data
 var matchData = null;
@@ -13,7 +16,6 @@ var groupData = null;
 var getData = () => {
     Ajax.get("https://worldcup.sfg.io/matches", (data) => {
         matchData = data;
-        Match.createTable(matchData, content, title);
         Ajax.get("https://worldcup.sfg.io/teams/", (data) => {
             teamData = data;
             Ajax.get("https://worldcup.sfg.io/teams/group_results", (data) => {
@@ -23,7 +25,7 @@ var getData = () => {
     });
 };
 
-var addEventListenersToNavButtons = function(){
+var addEventListenersToButtons = function(){
     btnTeams.addEventListener("click", () => {
         Team.createTable(teamData, content, title);
     });
@@ -35,9 +37,34 @@ var addEventListenersToNavButtons = function(){
     btnGroups.addEventListener("click", () => {
         Group.createTables(groupData, content, title);
     });
+
+    logoImage.addEventListener("click", () => {
+        Match.createTable(matchData, content, title);
+    });
+
+    textLogo.addEventListener("click", () => {
+        Match.createTable(matchData, content, title);
+    });
 };
 
 window.onload = () => {
     getData();
-    addEventListenersToNavButtons();
+    addEventListenersToButtons();
+    createPopUpWindow();
+};
+
+var createPopUpWindow = function(){
+    var div = document.createElement("div");
+    div.setAttribute("id", "popUp");
+    var text = document.createTextNode("Hello to see the statistics click on the buttons in the navigation bar and then scroll down the page.");
+    div.appendChild(text);
+    var closeBtn = document.createElement("Input");
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("value", "Close");
+    closeBtn.setAttribute("id", "closeBtn");
+    closeBtn.addEventListener("click", () => {
+        popUp.removeChild(div);
+    });
+    div.appendChild(closeBtn);
+    popUp.appendChild(div);
 };
