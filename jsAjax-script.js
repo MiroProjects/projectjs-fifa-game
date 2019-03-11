@@ -12,11 +12,11 @@ var Ajax = {
     get(url, callback){
         var request = this.init();
         request.open("GET", url);
-        request.send();
         request.onload = () => {
             var data = request.responseText;
             var json = JSON.parse(data);
             callback(json);
         }
+        request.send();
     }
 };

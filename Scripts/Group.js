@@ -47,6 +47,13 @@ Group.clear = function(content, title){
 
 Group.createTables = function(data, content, paragraph){
     this.clear(content, paragraph);
+    //Check if response is ok
+    if (!data) {
+        var errorText = document.createTextNode("AN ERROR OCCURED WITH THE RESPONSE FROM THE SERVER. PLEASE TRY AGAIN LATER.");
+        paragraph.appendChild(errorText);
+        return;
+    }
+
     paragraph.appendChild(document.createTextNode("Groups' statistics"));
     var groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
 

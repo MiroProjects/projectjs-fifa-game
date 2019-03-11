@@ -4,6 +4,13 @@ Country.createTable = function(data, content, paragraph){
     //Clear the previous field
     this.clear(content, paragraph);
 
+    //Check if response is ok
+    if (!data) {
+        var errorText = document.createTextNode("AN ERROR OCCURED WITH THE RESPONSE FROM THE SERVER. PLEASE TRY AGAIN LATER.");
+        paragraph.appendChild(errorText);
+        return;
+    }
+
     var table = document.createElement("table");
     table.setAttribute("id", "infoTable");
     var thead = document.createElement("thead");
