@@ -3,6 +3,9 @@ Search = {};
 //Saves the selected country's matches
 Search.searchMatches = null;
 
+//Holds the current search window
+Search.currentSearchWindow = null;
+
 Search.createTable = function(data, content, paragraph){
     //Clear the previous field
     this.clear(content, paragraph);
@@ -59,6 +62,11 @@ Search.clear = function(content, title){
 
 //Creates the search window
 Search.createSearchWindow = function (elementToAppendTo, countryData, content, paragraph) {
+    //Checks if the window is already opened
+    if (this.currentSearchWindow) {
+        return;
+    }
+
     //Create search window
     //Create the container div
     var div = document.createElement("div");
@@ -84,6 +92,8 @@ Search.createSearchWindow = function (elementToAppendTo, countryData, content, p
 
     div.appendChild(closeBtn);
     elementToAppendTo.appendChild(div);
+    //Save the current open window
+    this.currentSearchWindow = div;
 };
 
 //Creates all dropdows for the select
@@ -122,6 +132,7 @@ var createDropDownFilters = function (div, countryData, content, paragraph) {
             selectCountry.innerHTML = "";
             selectMatch.innerHTML = "";
             createDefaultOption(selectCountry);
+            createDefaultOption(selectMatch);
             //Create options for the second country dropdown
             for (let index = 0; index < countryData.length; index++) {
                 var option = document.createElement("option");
