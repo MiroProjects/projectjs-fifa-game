@@ -36,7 +36,7 @@ header#mainHeader span#textLogo{
 header#mainHeader nav{
     display: inline-block;
     padding: 0;
-    margin-left: 15%;
+    margin-left: 10%;
     vertical-align: bottom;
 }
 
@@ -44,7 +44,6 @@ header#mainHeader nav ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 550px;
     font-size: 25px;
     color: white;
 }
@@ -63,7 +62,6 @@ header#mainHeader nav ul li:hover, header#mainHeader span#textLogo:hover{
 header#secondHeader{
     padding: 0;
     margin: 0;
-    height: 854px;
 }
 
 img{
@@ -123,18 +121,21 @@ p.firstGroup{
     margin-top: 0;
 }
 
-div#popUp{
+div#popUp, div#popUpSearch, div#popUpInfoMatch{
     width: 300px;
     padding: 10px;
-    background-color: rgba(242, 242, 242, 0.8);
-    border: solid rgb(204, 204, 204) 5px;
+    background-color: #ffffff;
+    border: solid #e6e6e6 5px;
     text-align: center;
     position: fixed;
-    top: 150px;
-    left: 40%;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 5% auto;
     font-size: 25px;
-    height: 230px;
+    height: 300px;
     font-family: 'Overpass', sans-serif;
+    border-radius: 5px;
 }
 
 input#closeBtn{
@@ -145,13 +146,23 @@ input#closeBtn{
     display: inline-block;
     width: 150px;
     opacity: 0.6;
-    margin-top: 50px;
+    margin-top: 10px;
     font-family: 'Overpass', sans-serif;
 }
 
 input#closeBtn:hover{
     opacity: 1;
     cursor: pointer;
+}
+
+h2#popUpHeader{
+    margin-top: 0;
+    color: #333;
+}
+
+p#popUpParagraph{
+    max-height: 60%;
+    overflow: auto;
 }
 
 p#onLoadMessage{
@@ -175,17 +186,7 @@ input.infoButtons:hover{
 }
 
 div#popUpInfoMatch{
-    width: 300px;
-    padding: 10px;
-    background-color: rgba(242, 242, 242, 0.8);
-    border: solid rgb(204, 204, 204) 5px;
-    text-align: center;
-    position: fixed;
-    top: 150px;
-    left: 40%;
-    font-size: 25px;
-    height: 320px;
-    font-family: 'Overpass', sans-serif;
+    height: 350px;
 }
 
 p.popUpInfoParagraph{
@@ -194,17 +195,7 @@ p.popUpInfoParagraph{
 }
 
 div#popUpSearch{
-    width: 300px;
-    padding: 10px;
-    background-color: rgba(242, 242, 242, 0.8);
-    border: solid rgb(204, 204, 204) 5px;
-    text-align: center;
-    position: fixed;
-    top: 150px;
-    left: 40%;
-    font-size: 25px;
-    height: 260px;
-    font-family: 'Overpass', sans-serif;
+    height: 290px;
 }
 
 select#selectCountry, select#selectLetter, select#selectMatch{

@@ -94,6 +94,7 @@ Match.addEventListenersToButtons = function(matchData){
                     break;
                 }          
             }
+            LocalStorage.addElementToHistory({action: "click", name: "Weather", path: `Matches->${match.venue}`});
             var dataWeather = match.weather;
             text = [`Weather: ${dataWeather.description}`, 
             `Temperature: ${dataWeather.temp_celsius}`,
@@ -118,6 +119,10 @@ var popUpInfoWindow = function(textArray){
     //Create pop up
     var div = document.createElement("div");
     div.setAttribute("id", "popUpInfoMatch");
+    var textHeader = document.createElement("h2");
+    textHeader.appendChild(document.createTextNode("Information"));
+    textHeader.setAttribute("id", "popUpHeader");
+    div.appendChild(textHeader);
     for (let index = 0; index < textArray.length; index++) {
         var textParagraph = document.createElement("p");
         textParagraph.setAttribute("class", "popUpInfoParagraph");

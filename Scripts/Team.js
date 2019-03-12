@@ -89,6 +89,7 @@ Team.addEventListenersToButtons = function () {
     for (let index = 0; index < this.buttons.length; index++) {
         this.buttons[index].addEventListener("click", () => {
             var countryId = this.buttons[index].id;
+            LocalStorage.addElementToHistory({action: "click", name: "All Country's matches", path: `Teams->${countryId}`});
             //Get the cache and create table with this cache
             if (this.countries[countryId]) {
                 Country.createTable(this.countries[countryId], this.content, this.paragraph);

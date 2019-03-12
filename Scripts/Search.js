@@ -74,8 +74,10 @@ Search.createSearchWindow = function (elementToAppendTo, countryData, content, p
     //Create the title
     var textParagraph = document.createElement("p");
     textParagraph.setAttribute("class", "popUpInfoParagraph");
-    var text = document.createTextNode("Search players here...");
-    textParagraph.appendChild(text);
+    var textHeader = document.createElement("h2");
+    textHeader.appendChild(document.createTextNode("Search players here"));
+    textHeader.setAttribute("id", "popUpHeader");
+    div.appendChild(textHeader);
     div.appendChild(textParagraph);
 
     //Create the dropdowns
@@ -88,6 +90,7 @@ Search.createSearchWindow = function (elementToAppendTo, countryData, content, p
     closeBtn.setAttribute("id", "closeBtn");
     closeBtn.addEventListener("click", () => {
         elementToAppendTo.removeChild(div);
+        this.currentSearchWindow = null;
     });
 
     div.appendChild(closeBtn);
@@ -98,6 +101,7 @@ Search.createSearchWindow = function (elementToAppendTo, countryData, content, p
 
 //Creates all dropdows for the select
 var createDropDownFilters = function (div, countryData, content, paragraph) {
+    var saveSearchValues = {};
     //Create dropdowns
     var selectLetter = document.createElement("select");
     var selectCountry = document.createElement("select");
@@ -133,6 +137,7 @@ var createDropDownFilters = function (div, countryData, content, paragraph) {
             selectMatch.innerHTML = "";
             createDefaultOption(selectCountry);
             createDefaultOption(selectMatch);
+            saveSearchValues.letter = value;
             //Create options for the second country dropdown
             for (let index = 0; index < countryData.length; index++) {
                 var option = document.createElement("option");
@@ -152,6 +157,7 @@ var createDropDownFilters = function (div, countryData, content, paragraph) {
             //Get the country
             selectMatch.innerHTML = "";
             createDefaultOption(selectMatch);
+            saveSearchValues.country = value;
             Ajax.get(`http://worldcup.sfg.io/matches/country?fifa_code=${value}`, (data) => {
                 //Add all the matches of this country
                 for (let i = 0; i < data.length; i++) {
@@ -171,6 +177,8 @@ var createDropDownFilters = function (div, countryData, content, paragraph) {
         if (value) {
             for (let index = 0; index < Search.searchMatches.length; index++) {
                 if (Search.searchMatches[index].venue == value) {
+                    saveSearchValues.match = value;
+                    LocalStorage.addElementToHistory({action: "search", name: `Searched: ${saveSearchValues.letter} -> ${saveSearchValues.country} -> ${saveSearchValues.match}`, path: "Search"});
                     Search.createTable(Search.searchMatches[index].officials, content, paragraph);
                     break;
                 }
